@@ -1,0 +1,58 @@
+version: "3.8"
+
+services:
+  web:
+    build: .
+    environment:
+      # Domain and SSL
+      - HOSTNAME=subfinder.ns1.icu
+      - SSL_CONTACT_EMAIL=animetvclipsss@gmail.com
+      
+      # Database config
+      - DATABASE_URL=postgresql://test:test@db/subnotifier
+      
+      # SMTP config
+      - SMTP_SERVER=smtp.gmail.com
+      - SMTP_PORT=587
+      - SMTP_USERNAME=animetvclipsss@gmail.com
+      - SMTP_PASSWORD=caud wdqs uizq agzz
+      - FROM_EMAIL=animetvclipsss@gmail.com
+      - TO_EMAIL=animetvclipsss@gmail.com
+      
+      # Python/UVICORN config
+      - PYTHONUNBUFFERED=1
+      - UVICORN_CMD=uvicorn app.main:app --host 0.0.0.0 --port 8000 --log-level info --no-access-log
+      
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./ssldata:/app/ssldata
+      - ./data:/app/data
+      - ./payload-fire-images:/app/payload-fire-images
+      - ./logs:/var/log  # For persistent logs
+    depends_on:
+      db:
+        condition: service_healthy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: subnotifier
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U test -d subnotifier"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:

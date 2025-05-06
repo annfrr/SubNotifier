@@ -1,0 +1,3 @@
+"""
+SubNotifier application package
+"""
