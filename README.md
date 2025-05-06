@@ -2,8 +2,6 @@
 
 **SubNotifier** is a wildcard subdomain scanning and notification tool designed to help **bug bounty hunters**, **security researchers**, and **DevOps/security teams** monitor wildcard subdomains for a given root domain. It continuously scans a set of root domains for subdomains, stores discovered subdomains in a database, and notifies the user when new subdomains are detected.
 
-![image](https://github.com/user-attachments/assets/85a626ce-d7a1-4b87-af8f-d877d7c02d69)
-
 I wanted notifications for newly created subdomains along with a neat setup for saving wildcard subdomains and providing easy access, so I built this.  Most commonly used notification tools are not easy to set up, and each time you need to enter the shell to access domains. Here, you can curl your subdomains to a file and start your tests—or add internal functions for more automation.
 
 Notifications will be sent via email, and with continuous monitoring, it gives you the privilege of accessing untouched subdomains (fresh bounties).
