@@ -15,7 +15,7 @@ Notifications will be sent via email, and with continuous monitoring, it gives y
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/itu-itis22-aliyevn21/SubNotifier.git
+git clone https://github.com/annfrr/SubNotifier.git
 cd SubNotifier
 ```
 
