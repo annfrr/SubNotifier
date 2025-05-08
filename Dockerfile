@@ -14,7 +14,8 @@ RUN apt-get update && \
         nginx \
         postgresql-client \
         gettext-base \
-        curl && \
+        curl \
+        nano && \
     rm -rf /var/lib/apt/lists/* && \
     pip install certbot==2.6.0 josepy==1.13.0
 
